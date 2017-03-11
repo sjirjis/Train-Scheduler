@@ -37,14 +37,13 @@ $('#reset').on('click', function(){
 			,frequency: frequency[i]
 		});
 
-		dbRefStandard.on('value', function(snap){
-			//console.log(JSON.parse(snap.val()));
-			console.log(JSON.stringify(snap.val()));
-		});
-
 		//bump so routeId can be used as the next ID for custom route
 		routeId = routeId + 1;
 	}
+});
+
+dbRefStandard.on('child_added', function(snap){
+	console.log(snap.val().destination);
 });
 
 //create user input var's and assign default values
@@ -74,13 +73,13 @@ $('#submit').on('click', function(){
 	// 	alert('Empty required field! (change this alert to a modal)');
 	// finally, if we got here then go ahead and write to the db
 	// }else{
-		dbRefCustom.child(routeName + routeId).update({
-			train_name: $trainNameInput
-			,destination: $destinationInput
-			,frequency: $frequencyInput	
-		});
+		// dbRefCustom.child(routeName + routeId).update({
+		// 	train_name: $trainNameInput
+		// 	,destination: $destinationInput
+		// 	,frequency: $frequencyInput	
+		// });
 
-		routeId++
+		// routeId++
 
 		//alert('Train saved! (change this alert to a modal)');
 
@@ -94,3 +93,4 @@ $('#submit').on('click', function(){
 });
 
 
+console.log(Date.now());
