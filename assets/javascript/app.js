@@ -12,7 +12,7 @@ var dbRef = firebase.database().ref()
  ,dbRefStandard = dbRef.child('standard_schedule')
  ,dbRefCustom = dbRef.child('custom_schedule');
 
-$('#reset').on('click', function(){
+ var standardSchedule = function(){
 	//function to delete all custom routes and rebuild standard
 	//staging standard schedule data
 
@@ -48,8 +48,14 @@ $('#reset').on('click', function(){
 			+'<td>' + frequency[i] 
 		+'<tr>');	
 	}
+ };
 
-    $('.modal-title').html('Custom schedules removed!')
+standardSchedule();
+
+$('#reset').on('click', function(){
+	standardSchedule();
+
+    $('.modal-title').html('Reset to Standard Train Schedule!')
     $('#modal').modal('show');
 	setTimeout(function() {$('#modal').modal('hide');}, 2000);    
 
