@@ -58,7 +58,6 @@ $('#reset').on('click', function(){
     $('.modal-title').html('Reset to Standard Train Schedule!')
     $('#modal').modal('show');
 	setTimeout(function() {$('#modal').modal('hide');}, 2000);    
-
 });
 
 
